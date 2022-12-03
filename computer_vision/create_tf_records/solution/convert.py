@@ -72,6 +72,7 @@ def process_tfr(path):
     logging.info(f'Processing {path}')
     writer = tf.python_io.TFRecordWriter(f'../output/{file_name}')
     dataset = tf.data.TFRecordDataset(path, compression_type='')
+    
     for idx, data in enumerate(dataset):
         frame = open_dataset.Frame()
         frame.ParseFromString(bytearray(data.numpy()))
